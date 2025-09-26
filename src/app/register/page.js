@@ -23,7 +23,7 @@ export default function RegisterPage() {
     // 1 MINUSCULA, 1 NUMERO  1 UN CARACTER ESPECIAL y tamaño maximo de 15
     const formatocontraseña = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d@$!%*?&]{8,15}$/;
   // vamos a agregar una validacion para la longitud de la contraseña
-    if(!passwordPattern.test(formData.password)) {
+    if(!formatocontraseña.test(formData.password)) {
       setMessage("La contraseña debe de tener un minimo de 8 caracteres")
     }
 

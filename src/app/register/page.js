@@ -20,6 +20,11 @@ export default function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+  // vamos a agregar una validacion para la longitud de la contraseña
+    if(formData.password.length < 8) {
+      setMessage("La contraseña debe de tener un minimo de 8 caracteres")
+    }
+
     try {
       const res = await fetch("http://localhost:5000/api/register", {
         method: "POST",

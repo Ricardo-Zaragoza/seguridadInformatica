@@ -47,6 +47,7 @@ app.post("/api/register", async (req, res) => {
     if (!correo || !/\S+@\S+\.\S+/.test(correo)) {
       return res.status(400).json({ error: "Correo inválido" });
     }
+
     const hashedPassword = await bcrypt.hash(contraseña, 10);
     const nuevoUsuario = new User({
       nombre,

@@ -43,6 +43,10 @@ app.post("/api/register", async (req, res) => {
     const existe = await User.findOne({ correo });
     if (existe) return res.status(400).json({ error: "Correo ya registrado" });
 
+    //validacion del formato del correo
+    if (!correo || !/\S+@\S+\.\S+/.test(correo)) {
+      return res.status(400).json({ error: "Correo inválido" });
+    }
     const hashedPassword = await bcrypt.hash(contraseña, 10);
     const nuevoUsuario = new User({
       nombre,
